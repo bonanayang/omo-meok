@@ -1,5 +1,25 @@
-# Vue 3 + TypeScript + Vite
+# OmOmeOk 🍜
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Vue 3 + Vite + Tailwind 기반의 랜덤 음식 추천기
+Random food picker built with Vue 3, Vite, and Tailwind CSS.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## ✨ 기능
+
+- 음식 카테고리별 랜덤 추천
+- 태그 필터링 (포함/제외)
+- 예산 조건 설정
+- 지역 선택
+
+## 🛠 기술 스택
+
+- Vue 3
+- Vite
+- Tailwind CSS
+- TypeScript
+
+## 🚀 실행 방법
+
+```bash
+npm install
+npm run dev
+```
