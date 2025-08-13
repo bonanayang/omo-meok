@@ -1,7 +1,9 @@
+// tsconfig.app.json
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "composite": true,
+    "noEmit": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

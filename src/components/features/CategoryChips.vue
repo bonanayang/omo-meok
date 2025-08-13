@@ -5,7 +5,7 @@ import type { FoodCategory } from '@/types/food';
 const props = defineProps<{ modelValue: Set<FoodCategory> }>();
 const emit = defineEmits<{ 'update:modelValue': [Set<FoodCategory>] }>();
 
-const all: FoodCategory[] = ['Korean', 'Japanese', 'Chinese', 'Western', 'Street', 'Cafe'];
+const all: FoodCategory[] = ['Korean', 'Japanese', 'Chinese', 'Western', 'Street'];
 
 function toggle(c: FoodCategory) {
   const next = new Set(props.modelValue);

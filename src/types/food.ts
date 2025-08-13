@@ -1,4 +1,4 @@
-export type FoodCategory = 'Korean' | 'Chinese' | 'Japanese' | 'Western' | 'Street' | 'Cafe' | 'Salad';
+export type FoodCategory = 'Korean' | 'Chinese' | 'Japanese' | 'Western' | 'Street' | 'Salad';
 
 export type FoodSubcategory =
   | 'Rice'
@@ -10,8 +10,6 @@ export type FoodSubcategory =
   | 'Pasta'
   | 'Pizza'
   | 'Sandwich'
-  | 'Dessert'
-  | 'Coffee'
   | 'SaladBowl';
 
 export type FoodTag = 'spicy' | 'vegan' | 'noPork' | 'seafood' | 'hot' | 'cold' | 'quick' | 'light' | 'heavy' | 'sweet';
@@ -34,7 +32,6 @@ export const CATEGORY_LABELS: Record<FoodCategory, string> = {
   Japanese: '일식',
   Western: '양식',
   Street: '분식',
-  Cafe: '카페',
   Salad: '샐러드',
 };
 
@@ -44,8 +41,7 @@ export const SUBS_BY_CATEGORY: Record<FoodCategory, FoodSubcategory[]> = {
   Japanese: ['Noodle', 'Rice', 'Soup'],
   Western: ['Pasta', 'Pizza', 'Sandwich'],
   Street: ['Noodle', 'Fried', 'Rice'],
-  Cafe: ['Dessert', 'Coffee', 'Sandwich'],
-  Salad: ['SaladBowl'],
+  Salad: ['SaladBowl', 'Sandwich'],
 };
 
 export const SUB_LABELS: Record<FoodSubcategory, string> = {
@@ -58,8 +54,6 @@ export const SUB_LABELS: Record<FoodSubcategory, string> = {
   Pasta: '파스타',
   Pizza: '피자',
   Sandwich: '샌드위치',
-  Dessert: '디저트',
-  Coffee: '커피',
   SaladBowl: '샐러드볼',
 };
 export const TAG_LABELS: Record<FoodTag, string> = {
