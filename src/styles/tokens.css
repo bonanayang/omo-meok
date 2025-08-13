@@ -1,0 +1,135 @@
+/* ===== Design Tokens (Dark-first) ===== */
+:root {
+  /* Base (RGB) — 대비 높은 다크톤 */
+  --bg:        12 14 18;      /* #0C0E12 */
+  --fg:        236 239 244;   /* #ECEFF4 */
+  --muted:     171 178 191;   /* #ABB2BF */
+  --surface:   24 27 34;      /* 카드 배경 */
+  --surface-2: 32 36 44;      /* 입력/버튼 배경 */
+  --border:    54 60 74;      /* 구분선 */
+  --accent:    99 179 237;    /* 포인트 블루 #63B3ED (WCAG 대비 좋음) */
+  --accent-700: 56 132 199;   /* hover용 */
+
+  --radius-sm: .5rem;
+  --radius:    .8rem;
+  --radius-xl: 1.1rem;
+
+  /* 그림자: 다크에서 과하지 않게 */
+  --shadow-md: 0 10px 30px rgba(0,0,0,.35);
+
+  --container: 44rem; /* 읽기 좋은 폭 */
+}
+
+/* 라이트 모드(시스템 선호) */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg:        250 250 251;
+    --fg:        32 35 41;
+    --muted:     105 110 122;
+    --surface:   255 255 255;
+    --surface-2: 245 247 250;
+    --border:    224 228 235;
+    --accent:    17 110 208;
+    --accent-700: 10 85 165;
+
+    --shadow-md: 0 12px 32px rgba(0,0,0,.08);
+  }
+}
+
+/* ===== Utilities ===== */
+@utility container-prose {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@utility text-fg    { color: rgb(var(--fg)); }
+@utility text-muted { color: rgb(var(--muted)); }
+@utility bg-app     { background-color: rgb(var(--bg)); }
+
+@utility card {
+  background: rgb(var(--surface));
+  border: 1px solid rgb(var(--border));
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+@utility input-surface {
+  background: rgb(var(--surface-2));
+  border: 1px solid rgb(var(--border));
+  color: rgb(var(--fg));
+  border-radius: var(--radius);
+}
+
+@utility btn-primary {
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  color: #fff;
+  background: rgb(var(--accent));
+  border-radius: calc(var(--radius) + .2rem);
+  padding:.8rem 1.1rem;
+  font-weight: 700; letter-spacing: .2px;
+  transition: transform .08s ease, filter .2s ease, box-shadow .2s ease;
+  box-shadow: 0 8px 22px rgba(var(--accent) / .25);
+
+  &:hover  { background: rgb(var(--accent-700)); }
+  &:active { transform: translateY(1px) scale(.99); }
+  &:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(99 179 237 / .35); }
+}
+
+@utility btn-ghost {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background: rgb(var(--surface-2));
+  color: rgb(var(--fg));
+  border: 1px solid rgb(var(--border));
+  border-radius: calc(var(--radius) + .2rem);
+  padding:.7rem 1rem;
+  transition: background-color .2s ease, transform .08s ease;
+
+  &:hover { filter: brightness(1.05); }
+  &:active { transform: translateY(1px); }
+}
+
+@utility chip {
+  display:inline-flex; align-items:center; gap:.35rem;
+  background: rgb(var(--surface-2));
+  color: rgb(var(--fg));
+  border: 1px solid rgb(var(--border));
+  border-radius: 9999px;
+  padding:.38rem .72rem;
+  transition: background-color .2s ease, border-color .2s ease, transform .08s ease;
+
+  &:hover { transform: translateY(-1px); }
+}
+@utility chip-selected {
+  background: rgb(var(--accent));
+  color: #fff;
+  border-color: rgb(var(--accent));
+}
+
+@keyframes fadeUp { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+@utility fade-up { animation: fadeUp .38s cubic-bezier(.22,1,.36,1); }
+
+/* === 강제 테마: data-theme 속성이 있으면 시스템 선호를 덮어씀 === */
+:root[data-theme="dark"] {
+  --bg:        12 14 18;
+  --fg:        236 239 244;
+  --muted:     171 178 191;
+  --surface:   24 27 34;
+  --surface-2: 32 36 44;
+  --border:    54 60 74;
+  --accent:    99 179 237;
+  --accent-700: 56 132 199;
+  --shadow-md: 0 10px 30px rgba(0,0,0,.35);
+}
+
+:root[data-theme="light"] {
+  --bg:        250 250 251;
+  --fg:        32 35 41;
+  --muted:     105 110 122;
+  --surface:   255 255 255;
+  --surface-2: 245 247 250;
+  --border:    224 228 235;
+  --accent:    17 110 208;
+  --accent-700: 10 85 165;
+  --shadow-md: 0 12px 32px rgba(0,0,0,.08);
+}
