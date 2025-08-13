@@ -1,6 +1,6 @@
 # OmOmeOk 🍜
 
-Vue 3 + Vite + Tailwind 기반의 랜덤 음식 추천기
+Vue 3 + Vite + Tailwind 기반의 랜덤 음식 추천기<br/>
 Random food picker built with Vue 3, Vite, and Tailwind CSS.
 
 ## ✨ 기능
