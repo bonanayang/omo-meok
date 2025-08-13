@@ -23,5 +23,22 @@ dist-ssr
 *.sln
 *.sw?
 
+# src에 생기는 산출물 차단
+src/**/*.vue.js
 src/**/*.js
 src/**/*.js.map
+src/**/*.d.ts
+!src/env.d.ts
+
+# TS build cache 폴더/파일
+*.tsbuildinfo
+.tsbuild/
+
+# Vite cache
+.vite/
+
+# ESLint / TypeScript / test 등 캐시/산출물
+.eslintcache
+coverage/
+
+.vercel

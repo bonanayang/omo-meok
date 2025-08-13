@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
-import {
-  CATEGORY_LABELS,
-  SUB_LABELS,
-  TAG_LABELS,
-  type FoodCategory,
-  type FoodSubcategory,
-  type FoodTag,
-} from '@/types/food';
 import { useMenuFilter } from '@/composables/useMenuFilter';
-import { FOODS, type Food } from '@/data/foods';
+import { FOODS } from '@/data/foods';
+
+import type { Food, FoodCategory, FoodSubcategory, FoodTag } from '@/types/food';
+import { CATEGORY_LABELS, SUB_LABELS, TAG_LABELS } from '@/types/food';
 
 const REGIONS = ['구로', '판교', '광교', '대구'] as const;
 const { region, category, sub, includeTags, excludeTags, budget, subsForCategory, pool } = useMenuFilter();
@@ -30,7 +25,13 @@ function roll() {
 
 const canStep2 = computed(() => !!region.value);
 const canStep3 = computed(() => !!category.value); // 세부메뉴는 선택 optional
-const searchQuery = computed(() => `${region.value ?? ''} ${current.value?.name ?? ''}`.trim());
+const searchQuery = computed<string>(() => `${region.value ?? ''} ${current.value?.name ?? ''}`.trim());
+
+// ✅ 템플릿에서 window 직접 호출하지 말고 핸들러로
+const openMap = () => {
+  const q = encodeURIComponent(searchQuery.value);
+  window.open(`https://map.naver.com/p/search/${q}`, '_blank');
+};
 </script>
 
 <template>
@@ -148,20 +149,15 @@ const searchQuery = computed(() => `${region.value ?? ''} ${current.value?.name 
         <h3 class="text-fg font-semibold">추천 결과 <span class="text-muted">/ Step 3</span></h3>
         <div class="flex gap-2">
           <button class="btn-ghost" @click="roll" :disabled="!canStep3">추천메뉴</button>
-          <button
-            class="btn-primary"
-            @click="window.open(`https://map.naver.com/p/search/${encodeURIComponent(searchQuery)}`, '_blank')"
-            :disabled="!current"
-          >
-            식당 추천받기 🔍
-          </button>
+          <button class="btn-primary" @click="openMap" :disabled="!current">식당 추천받기 🔍</button>
         </div>
       </div>
 
       <div v-if="current" class="card p-5 fade-up">
         <h4 class="text-[1.15rem] font-semibold tracking-[-0.01em]">{{ current.name }}</h4>
         <p class="text-sm text-muted mt-1">
-          {{ CATEGORY_LABELS[current.category] }} <span v-if="current.sub">· {{ SUB_LABELS[current.sub] }}</span>
+          {{ CATEGORY_LABELS[current?.category as FoodCategory] }}
+          <span v-if="current?.sub">· {{ SUB_LABELS[current.sub as FoodSubcategory] }}</span>
         </p>
       </div>
     </div>

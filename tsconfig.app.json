@@ -5,17 +5,14 @@
     "composite": true,
     "noEmit": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
+    "paths": { "@/*": ["src/*"] },
     "module": "ESNext",
     "target": "ESNext",
     "moduleResolution": "bundler",
     "jsx": "preserve",
     "strict": true,
     "skipLibCheck": true,
-    "useDefineForClassFields": true,
-    "types": ["vite/client"]
+    "useDefineForClassFields": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "env.d.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "src/vite-env.d.ts"]
 }
